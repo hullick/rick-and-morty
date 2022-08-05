@@ -1,2 +1,7 @@
-<h2>Bar Chart</h2>
-<figure id="bar"></figure>
+<figure id="bar">
+  <!-- <rem-character-card [svg]="svg"></rem-character-card> -->
+  <rem-character-card-microcomponent
+    [parent-node-uuid-or-root-element-tag]="plottedD3ElementUuid"
+    [config]="characterCardMicrocomponentAttrs"
+  ></rem-character-card-microcomponent>
+</figure>

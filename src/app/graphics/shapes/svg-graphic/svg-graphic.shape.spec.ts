@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SVGGraphicShape } from './svg-graphic.shape';
 
-import { GenericGraphicComponent } from './generic-graphic.component';
 
 describe('GenericGraphicComponent', () => {
-  let component: GenericGraphicComponent;
-  let fixture: ComponentFixture<GenericGraphicComponent>;
+  let component: SVGGraphicShape;
+  let fixture: ComponentFixture<SVGGraphicShape>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenericGraphicComponent ]
+      declarations: [ SVGGraphicShape ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GenericGraphicComponent);
+    fixture = TestBed.createComponent(SVGGraphicShape);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

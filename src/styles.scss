@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Ricky and Morty";
+  src: local("Ricky and Morty"),
+    url(./assets/fonts/rick_morty_font.ttf) format("truetype");
+}
+
+.rick_morty_font {
+  font-family: "Ricky and Morty";
+  stroke: black;
+  stroke-width: 0.3px;
+  font-size: x-large;
+  fill: rgb(21, 173, 201);
+}
