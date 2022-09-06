@@ -7,4 +7,8 @@ export abstract class RectShape extends GenericGraphicShape {
   protected override get nodeType(): string {
     return 'rect';
   }
+
+  protected onCurrentDataChange(): void {
+    // TODO: Implement
+  }
 }

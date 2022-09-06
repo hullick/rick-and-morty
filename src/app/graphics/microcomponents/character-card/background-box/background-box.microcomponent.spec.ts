@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CharacterCardBackgroundBoxMicrocomponent } from './background-box.microcomponent';
 
-describe('BackgroundBoxComponent', () => {
+describe('CharacterCardBackgroundBoxMicrocomponent', () => {
   let component: CharacterCardBackgroundBoxMicrocomponent;
   let fixture: ComponentFixture<CharacterCardBackgroundBoxMicrocomponent>;
 

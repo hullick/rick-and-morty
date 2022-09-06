@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { ComponentAttribute } from 'src/app/schemas/component-attributes';
 import { D3ElementService } from 'src/app/services/d3-element/d3-element.service';
 
@@ -13,11 +14,13 @@ export abstract class GenericGraphicShape implements OnInit {
   protected childs: Array<GenericGraphicShape> = [];
 
   protected plottedD3ElementUuid!: string;
-  protected abstract get data(): any[];
+  protected currentData: BehaviorSubject<any> = new BehaviorSubject(undefined);
 
   protected get nodeType(): string {
     return 'g';
   }
+
+  protected abstract onCurrentDataChange(): void;
 
   public get plottedD3Element() {
     if (this.plottedD3ElementUuid)
@@ -49,11 +52,14 @@ export abstract class GenericGraphicShape implements OnInit {
     }
 
     this.applyAttrs();
+
+    this.currentData.subscribe(() => this.onCurrentDataChange());
   }
 
   protected applyAttrs() {
-    if (this.config.attrs)
-      Object.entries(this.config.attrs).forEach(([key, value]) => {
+
+    if (this.config?.attrs)
+      Object.entries(this.config?.attrs).forEach(([key, value]) => {
         this.plottedD3Element?.selection.attr(key, value);
       });
   }

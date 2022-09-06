@@ -1,5 +1,19 @@
 <figure id="bar">
-  <!-- <rem-character-card [svg]="svg"></rem-character-card> -->
+  <rem-character-node-microcomponent
+    [parent-node-uuid-or-root-element-tag]="plottedD3ElementUuid"
+    *ngFor="let item of remApiService.getCharacters(); let i = index"
+    [character]="item"
+    [config]="{
+      attrs: {
+        width: 40,
+        height: 40,
+        x: (i % 25) * 60,
+        y: getColumn(i) * 60
+      }
+    }"
+  >
+  </rem-character-node-microcomponent>
+
   <rem-character-card-microcomponent
     [parent-node-uuid-or-root-element-tag]="plottedD3ElementUuid"
     [config]="characterCardMicrocomponentAttrs"

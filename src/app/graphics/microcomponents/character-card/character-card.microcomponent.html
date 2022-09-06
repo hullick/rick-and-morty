@@ -8,4 +8,18 @@
   }"
 ></rem-character-card-background-box-microcomponent>
 
+<rem-character-card-avatar-microcomponent
+  [parent-node-uuid-or-root-element-tag]="plottedD3ElementUuid"
+  [config]="{
+    attrs: avatarAttrs
+  }"
+></rem-character-card-avatar-microcomponent>
+
+<rem-character-card-infos-microcomponent
+  [parent-node-uuid-or-root-element-tag]="plottedD3ElementUuid"
+  [config]="{
+  attrs: infosAttr
+}"
+></rem-character-card-infos-microcomponent>
+
 <!-- TODO: Set a default background box's config -->

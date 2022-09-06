@@ -1,34 +1,51 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Character } from 'src/app/schemas/character';
+import { ComponentAttribute } from 'src/app/schemas/component-attributes';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CharacterCardService {
-  protected _hidden: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  protected $hidden: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  protected $currentConfig:
+    | BehaviorSubject<ComponentAttribute>
+    | BehaviorSubject<any> = new BehaviorSubject(undefined);
+  protected $lastMouseOverCharacter:
+    | BehaviorSubject<Character>
+    | BehaviorSubject<any> = new BehaviorSubject(undefined);
 
-  protected _lastMouseOverCharacter: Subject<Character> = new Subject();
-
-  constructor() {}
+  public get $currentConfigObservable(): Observable<ComponentAttribute> {
+    return this.$currentConfig.asObservable();
+  }
 
   public show(): void {
-    this._hidden.next(false);
+    this.$hidden.next(false);
   }
 
   public hide(): void {
-    this._hidden.next(true);
+    this.$hidden.next(true);
   }
 
   public get hiddenStatus(): Observable<boolean> {
-    return this._hidden.asObservable();
+    return this.$hidden.asObservable();
   }
 
-  public get lastMouseOverCharacter(): Observable<Character> {
-    return this._lastMouseOverCharacter.asObservable();
+  public get $selectedCharacters(): Observable<Character> {
+    return this.$lastMouseOverCharacter.asObservable();
   }
 
-  public setNewMouseOverCharacter(character: Character): void {
-    this._lastMouseOverCharacter.next(character);
+  public get $lastSelectedCharacter(): Character {
+    return this.$lastMouseOverCharacter.value;
+  }
+
+  public setNewSelectedCharacter(character: Character): void {
+    this.$lastMouseOverCharacter.next(character);
+  }
+
+  public setNewConfig(config: ComponentAttribute): void {
+    this.$currentConfig.next(
+      Object.assign(this.$currentConfig.value ?? {}, config)
+    );
   }
 }

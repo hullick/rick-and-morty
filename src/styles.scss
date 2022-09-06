@@ -8,7 +8,26 @@
 .rick_morty_font {
   font-family: "Ricky and Morty";
   stroke: black;
-  stroke-width: 0.3px;
-  font-size: x-large;
-  fill: rgb(21, 173, 201);
+  color: #12acc9;
+  -webkit-text-stroke-width: 0.6px;
+  -webkit-text-stroke-color: #d0d84b;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+text {
+  font-family: sans-serif;
+  font-size: 10px;
 }

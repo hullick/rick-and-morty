@@ -6,4 +6,8 @@ export abstract class SVGGraphicShape extends GenericGraphicShape {
   protected override get nodeType(): string {
     return 'svg';
   }
+
+  protected onCurrentDataChange(): void {
+    // TODO: Implement
+  }
 }
